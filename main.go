@@ -3,7 +3,7 @@ package main
 import (
 	"crypto/rand"
 
-	_ "github.com/influxdata/flux/ast/edit"
+	_ "github.com/influxdata/flux/parser"
 )
 
 func init() {
