@@ -7,6 +7,23 @@ To reproduce the error, run:
 PKG_CONFIG=$PWD/pkg-config.sh GO=/your/path/to/gotip /your/path/to/gotip run .
 ```
 
+You probably need rust installed to run this.
+
+To be completely honest, I don't have a good understanding of our pkg-config wrapper,
+nor exactly how libflux is supposed to interact with it.
+But this bug seems very likely related to our use of pkg-config,
+because with our current `import _ "github.com/influxdata/flux/libflux/go/libflux"` call in main.go,
+you can reduce that directory to one file containing only:
+
+```go
+package libflux
+
+// #cgo pkg-config: flux
+import "C"
+```
+
+and you will get the segmentation violation.
+
 The output on my machine, using `go version devel go1.17-5b328c4a2f Wed Apr 28 16:13:40 2021 +0000 darwin/amd64
 `, looks like:
 
