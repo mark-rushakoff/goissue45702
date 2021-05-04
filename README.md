@@ -2,6 +2,9 @@
 
 This is a minimized reproducer for https://github.com/golang/go/issues/45702.
 
+**UPDATE**: I now suspect 45702 was a different root cause from the bug demonstrated in this reproducer.
+The bug demonstrated in this repo was fixed by https://github.com/golang/go/commit/731a015ab8c8f44c7196123fd65b184a63d6835a.
+
 To reproduce the error, run:
 ```
 PKG_CONFIG=$PWD/pkg-config.sh GO=/your/path/to/gotip /your/path/to/gotip run .
